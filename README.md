@@ -41,3 +41,31 @@ pip install -r requirements.txt
 
 docker-compose up
 
+## Task 2 — Load Raw Data into PostgreSQL
+
+###  Goal
+Take the JSON files scraped in Task 1 and insert them into PostgreSQL, creating the **raw layer** of the data warehouse.
+
+---
+
+### 🛠️ Prerequisites
+- Postgres running in Docker (`docker-compose up -d db`)
+- Schema and table created:
+  ```sql
+  CREATE SCHEMA IF NOT EXISTS raw;
+
+  CREATE TABLE IF NOT EXISTS raw.telegram_messages (
+      message_id BIGINT PRIMARY KEY,
+      channel_name TEXT,
+      date TIMESTAMP,
+      text TEXT,
+      views INT,
+      forwards INT,
+      has_media BOOLEAN
+  );
+
+then run 
+python src/loader.py
+ to verifay postger db
+ ``` docker exec -it medical-telegram-warehouse-db-1 psql -U postgres -d medical_warehouse
+SELECT COUNT(*) FROM raw.telegram_messages;
