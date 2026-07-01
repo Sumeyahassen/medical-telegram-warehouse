@@ -1,0 +1,24 @@
+# Environment & secrets
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.env/
+
+# Data files
+data/
+*.csv
+*.json
+
+# Docker logs
+*.log
+
+# Jupyter notebooks checkpoints
+notebooks/.ipynb_checkpoints/
+
+# OS files
+.DS_Store
