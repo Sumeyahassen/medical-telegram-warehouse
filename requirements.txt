@@ -8,3 +8,5 @@ dagit
 telethon
 ultralytics
 pydantic
+python-dotenv
+
