@@ -101,7 +101,7 @@ Build fact and dimension tables from the staging layer to support analytics and 
 
 ---
 
-### 🛠️ Prerequisites
+###  Prerequisites
 - Task 3 completed (staging models exist and tested).
 - dbt connected to Postgres with working `profiles.yml`.
 - Raw and staging schemas available in the database.
@@ -120,5 +120,30 @@ Build fact and dimension tables from the staging layer to support analytics and 
 dbt run --select fact_messages
 dbt run --select dim_channels
 dbt test --select fact_messages dim_channels
+##  Task 5 — FastAPI Integration
+
+###  Goal
+Expose dbt marts (`fact_messages`, `dim_channels`) as REST API endpoints for analytics and dashboards.
+
+---
+
+### 🛠️ Prerequisites
+- Task 4 completed (marts created and tested).
+- PostgreSQL running with dbt models built.
+- Python virtual environment with FastAPI + SQLAlchemy installed.
+
+---
+
+###  File Locations
+- **API entrypoint** → `api/main.py`
+- **Database connection** → `api/database.py`
+- **Package marker** → `api/__init__.py`
+
+---
+
+###  How to Run
+```bash
+uvicorn api.main:app --reload --port 8001
+
 
 
