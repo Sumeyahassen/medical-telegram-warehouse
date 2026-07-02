@@ -94,3 +94,31 @@ Transform raw Telegram messages into a clean staging layer for analysis.
 dbt run --select stg_telegram_messages
 dbt test --select stg_telegram_messages
 
+##  Task 4 — dbt Marts
+
+###  Goal
+Build fact and dimension tables from the staging layer to support analytics and API queries.
+
+---
+
+### 🛠️ Prerequisites
+- Task 3 completed (staging models exist and tested).
+- dbt connected to Postgres with working `profiles.yml`.
+- Raw and staging schemas available in the database.
+
+---
+
+###  File Locations
+- **Fact model** → `medical_warehouse/models/marts/fact_messages.sql`
+- **Dimension model** → `medical_warehouse/models/marts/dim_channels.sql`
+- **Schema tests** → `medical_warehouse/models/marts/schema.yml`
+
+---
+
+### How to Run
+```bash
+dbt run --select fact_messages
+dbt run --select dim_channels
+dbt test --select fact_messages dim_channels
+
+
