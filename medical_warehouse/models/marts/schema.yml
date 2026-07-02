@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: fact_messages
+    description: "Daily aggregated metrics for Telegram messages"
+    columns:
+      - name: channel_name
+        tests: [not_null]
+      - name: day
+        tests: [not_null]
+
+  - name: dim_channels
+    description: "Unique list of Telegram channels"
+    columns:
+      - name: channel_name
+        tests: [unique, not_null]
