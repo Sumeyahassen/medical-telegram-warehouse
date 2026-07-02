@@ -1,0 +1,14 @@
+name: 'medical_warehouse'
+version: '1.0.0'
+config-version: 2
+
+profile: 'medical_warehouse'
+
+model-paths: ["medical_warehouse/models"]
+analysis-paths: ["medical_warehouse/analysis"]
+test-paths: ["medical_warehouse/tests"]
+seed-paths: ["medical_warehouse/seeds"]
+macro-paths: ["medical_warehouse/macros"]
+
+target-path: "target"
+clean-targets: ["target", "dbt_modules"]
