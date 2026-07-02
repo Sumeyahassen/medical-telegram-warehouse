@@ -1,11 +1,11 @@
 # medical-telegram-warehouse
-# 📦 Medical Telegram Warehouse
+#  Medical Telegram Warehouse
 
 Medical Telegram Warehouse is a data pipeline project that scrapes Telegram channels, stores raw data in PostgreSQL, transforms it with dbt, enriches images with YOLOv8, and exposes analytical APIs via FastAPI orchestrated by Dagster.
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ├── .vscode/
 ├── .github/
@@ -48,7 +48,7 @@ Take the JSON files scraped in Task 1 and insert them into PostgreSQL, creating 
 
 ---
 
-### 🛠️ Prerequisites
+###  Prerequisites
 - Postgres running in Docker (`docker-compose up -d db`)
 - Schema and table created:
   ```sql
@@ -69,3 +69,28 @@ python src/loader.py
  to verifay postger db
  ``` docker exec -it medical-telegram-warehouse-db-1 psql -U postgres -d medical_warehouse
 SELECT COUNT(*) FROM raw.telegram_messages;
+## Task 3 — dbt Staging Models
+
+### Goal
+Transform raw Telegram messages into a clean staging layer for analysis.
+
+---
+
+### Prerequisites
+- dbt installed (`pip install dbt-postgres`)
+- `profiles.yml` configured with correct Postgres credentials
+- Raw data loaded into `raw.telegram_messages`
+
+---
+
+### File Locations
+- **Staging model** → `medical_warehouse/models/staging/stg_telegram_messages.sql`
+- **Schema tests** → `medical_warehouse/models/staging/schema.yml`
+
+---
+
+### How to Run
+```bash
+dbt run --select stg_telegram_messages
+dbt test --select stg_telegram_messages
+
